@@ -18,13 +18,13 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const page = await browser.newPage();
 
   page.on('console', (msg) => {
-    console.log('LOG:', msg.text());
+    console.log(msg.text());
     logs.push(msg.text());
   });
 
   await page.goto(`file://${__dirname}/index.html`);
 
-  const videoDuration = 600 * 1000; // 10 minutes (600 sec)
+  const videoDuration = 5 * 1000; // 10 minutes (600 sec)
 
   await page.click('video');
 
