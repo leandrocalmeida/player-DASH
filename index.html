@@ -98,10 +98,10 @@
           const time = (new Date().getTime());
           const log = [
             time,
-            drops + " frames",
-            bufferLevel + " secs",
-            frameRate + " fps",
-            bitrate + " Kbps",
+            drops.droppedFrames,
+            bufferLevel,
+            frameRate,
+            bitrate,
             resolution
           ];
           console.log(log.join(';'))
