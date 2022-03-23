@@ -24,7 +24,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   await page.goto(`file://${__dirname}/index.html`);
 
-  const videoDuration = 5 * 1000; // 10 minutes (600 sec)
+  const videoDuration = 600 * 1000; // 10 minutes (600 sec)
 
   await page.click('video');
 
