@@ -4,7 +4,7 @@ const fs = require('fs');
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 (async () => {
-  const logs = [];
+  const logs = ["timestamp;droppedFrames;bufferLevel;frameRate;bitrate;resolution"];
 
   const config = {
     headless: false,

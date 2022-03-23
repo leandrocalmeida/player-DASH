@@ -95,30 +95,33 @@
           document.getElementById('framerate').innerText = frameRate + " fps";
           document.getElementById('reportedBitrate').innerText = bitrate + " Kbps";
           document.getElementById('resolution').innerText = resolution;
-          const time = (new Date().getTime());
-          const log = [
-            time,
-            drops.droppedFrames,
-            bufferLevel,
-            frameRate,
-            bitrate,
-            resolution
-          ];
-          console.log(log.join(';'))
+          
+          if (video.webkitVideoDecodedByteCount !== undefined) {
+            var lastDecodedByteCount = 0;
+            const bitrateInterval = 5;
+            var bitrateCalculator = setInterval(function () {
+              var calculatedBitrate = (((video.webkitVideoDecodedByteCount - lastDecodedByteCount) / 1000) * 8) / bitrateInterval;
+              document.getElementById('calculatedBitrate').innerText = Math.round(calculatedBitrate) + " Kbps";
+              lastDecodedByteCount = video.webkitVideoDecodedByteCount;
+              const time = (new Date().getTime());
+              const log = [
+                time,
+                drops.droppedFrames,
+                bufferLevel,
+                frameRate,
+                bitrate,
+                calculatedBitrate,
+                resolution
+                ];
+              console.log(log.join(';'))
+
+            }, bitrateInterval * 1000);
+          } 
+          else {
+            document.getElementById('chrome-only').style.display = "none";
+          }
         }
       }, 1000);
-
-      if (video.webkitVideoDecodedByteCount !== undefined) {
-        var lastDecodedByteCount = 0;
-        const bitrateInterval = 5;
-        var bitrateCalculator = setInterval(function () {
-          var calculatedBitrate = (((video.webkitVideoDecodedByteCount - lastDecodedByteCount) / 1000) * 8) / bitrateInterval;
-          document.getElementById('calculatedBitrate').innerText = Math.round(calculatedBitrate) + " Kbps";
-          lastDecodedByteCount = video.webkitVideoDecodedByteCount;
-        }, bitrateInterval * 1000);
-      } else {
-        document.getElementById('chrome-only').style.display = "none";
-      }
     }
   </script>
   <script>

@@ -1,0 +1,6 @@
+timestamp;droppedFrames;bufferLevel;frameRate;bitrate;resolution
+1648057269066;0;3.122;30;3134;[object HTMLSpanElement];1024x576
+1648057270066;0;2.129;30;3134;[object HTMLSpanElement];1024x576
+1648057271066;0;5.104;30;3134;[object HTMLSpanElement];1024x576
+1648057272066;0;8.052;30;3134;[object HTMLSpanElement];1024x576
+1648057273066;0;15.124;30;3134;[object HTMLSpanElement];1024x576
